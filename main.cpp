@@ -10,12 +10,27 @@ int main()
     HANDLE hProcces =  CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, NULL);
 
     PROCESSENTRY32 peInfo;
+    peInfo.dwSize = sizeof(PROCESSENTRY32); // sET BEFORE PR OC32FIRST
 
-    
+    // Initial test
+    /*
     std::cout << hProcces << std::endl;
     Process32First(hProcces, &peInfo);
-    std::cout << "The Process Name: "
+    std::wcout << L"The Process Name: " << peInfo.szExeFile;
+    */
 
-    std::cout << hProcces;
+    if (Process32First(hProcces, &peInfo))
+    {
+        do
+        {
+           std::wcout << L"The process Name is: " << peInfo.szExeFile << std::endl;
+        } 
+        while ((Process32Next(hProcces, &peInfo)));
+        
+    }
+
+
+
+    CloseHandle(hProcces);
 
 }
