@@ -3,13 +3,14 @@
 #include <TlHelp32.h>
 
 void ListProcesses();
-void UserOptions();
+bool UserOptions();
 
 int main()
 {
-    while(TRUE)
+    bool MainLoop = true;
+    while(MainLoop)
     {
-        UserOptions();
+        MainLoop = UserOptions();
     }
 
 
@@ -48,7 +49,7 @@ void ListProcesses()
     CloseHandle(hProcces);
 }
 
-void UserOptions()
+bool UserOptions()
 {
     int UserInput;
     std::cout << "What you wanna do?\n1. List all Processes\n";
@@ -61,8 +62,7 @@ void UserOptions()
         break;
     
     default:
-        break;
+        return false;
     }
-
-
+    return true;
 }
