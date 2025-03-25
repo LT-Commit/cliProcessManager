@@ -44,7 +44,7 @@ void ListProcesses()
            i++;
         } 
         while ((Process32Next(hProcces, &peInfo)));
-        
+
     }
     CloseHandle(hProcces);
 }
