@@ -48,11 +48,10 @@ void ListProcesses()
     }
     CloseHandle(hProcces);
 }
-
 bool UserOptions()
 {
     int UserInput;
-    std::cout << "What you wanna do?\n1. List all Processes\n";
+    std::cout << "What you wanna do?\n1. List all Processes\n2. Edit a process\n3. Quit";
     std::cin >> UserInput;
 
     switch (UserInput)
@@ -66,3 +65,5 @@ bool UserOptions()
     }
     return true;
 }
+
+// void 
