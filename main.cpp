@@ -47,5 +47,19 @@ void ListProcesses()
 
 void UserOptions()
 {
+    int UserInput;
+    std::cout << "What you wanna do?\n1. List all Processes\n";
+    std::cin >> UserInput;
+
+    switch (UserInput)
+    {
+    case 1:
+        ListProcesses();
+        break;
     
+    default:
+        break;
+    }
+
+
 }
