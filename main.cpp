@@ -2,8 +2,22 @@
 #include <windows.h>
 #include <TlHelp32.h>
 
+void ListProcesses();
+void UserOptions();
 
 int main()
+{
+    while(TRUE)
+    {
+        UserOptions();
+    }
+
+
+    return 0;
+
+}
+
+void ListProcesses()
 {
     std::cout << "\nList of all current processes: \n";
 
@@ -28,9 +42,10 @@ int main()
         while ((Process32Next(hProcces, &peInfo)));
         
     }
-
-
-
     CloseHandle(hProcces);
+}
 
+void UserOptions()
+{
+    
 }
