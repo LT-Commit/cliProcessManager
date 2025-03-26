@@ -41,6 +41,7 @@ void ListProcesses()
         {
            std::wcout << i <<L") The process Name is: " << peInfo.szExeFile << std::endl;
            std::wcout << "      -The Amount of threads of this proocess are: " << peInfo.cntThreads << std::endl;
+           std::wcout << "      -Process I.D : " << peInfo.th32ProcessID << std::endl;
            i++;
         } 
         while ((Process32Next(hProcces, &peInfo)));
