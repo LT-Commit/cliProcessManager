@@ -58,7 +58,7 @@ bool UserOptions()
     switch (UserInput)
     {
     case 1:
-        ListProcesses();
+        ListProcesses(); // list all processes 
         break;
     
     default:
