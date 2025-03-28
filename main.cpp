@@ -1,9 +1,13 @@
 #include <iostream>
 #include <windows.h>
 #include <TlHelp32.h>
+#include <vector>
 
 void ListProcesses();
 bool UserOptions();
+void ListProcessIDS();
+
+std::vector<int> Proccesses;
 
 int main()
 {
@@ -42,6 +46,8 @@ void ListProcesses()
            std::wcout << i <<L") The process Name is: " << peInfo.szExeFile << std::endl;
            std::wcout << "      -The Amount of threads of this proocess are: " << peInfo.cntThreads << std::endl;
            std::wcout << "      -Process I.D : " << peInfo.th32ProcessID << std::endl;
+
+           Proccesses.push_back(peInfo.th32ProcessID);
            i++;
         } 
         while ((Process32Next(hProcces, &peInfo)));
@@ -49,10 +55,19 @@ void ListProcesses()
     }
     CloseHandle(hProcces);
 }
+
+void ListProcessIDS()
+{
+    for(int i = 0; i < std::size(Proccesses); i++)
+    {
+        std::cout << Proccesses[i] << std::endl;
+    }
+}
+
 bool UserOptions()
 {
     int UserInput;
-    std::cout << "What you wanna do?\n1. List all Processes\n2. Edit a process\n3. Quit";
+    std::cout << "What you wanna do?\n1. List all Processes\n2. List all process IDS\n3. Quit"; // Just print
     std::cin >> UserInput;
 
     switch (UserInput)
@@ -60,7 +75,9 @@ bool UserOptions()
     case 1:
         ListProcesses(); // list all processes 
         break;
-    
+    case 2:
+        ListProcessIDS();
+        break;
     default:
         return false;
     }
